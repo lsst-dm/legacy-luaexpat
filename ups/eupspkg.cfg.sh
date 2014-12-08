@@ -19,4 +19,7 @@ config()
         sed -i '.prev' "s,^LIB_OPTION=.*,," config
         sed -i '.prev' "s,^#LIB_OPTION=\(.*\) #for MacOS X,LIB_OPTION=\1 #for MacOS X," config
     fi
+
+    # Don't be explicit about which compiler to use
+    sed -i '.prev' "s,^CC = \(.*\),," config
 }
