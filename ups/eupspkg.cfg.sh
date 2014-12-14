@@ -13,4 +13,7 @@ config()
     sed -i "s,LUA_VERSION_NUM= 500,LUA_VERSION_NUM= 514," config &&
     sed -i -r "s,EXPAT_INC= /usr/local/(.*),EXPAT_INC=${EXPAT_DIR}/\1\nEXPAT_LIBDIR=${EXPAT_DIR}/lib," config && 
     sed -i "s,-lexpat,-L\\\$\\(EXPAT_LIBDIR\\) -lexpat," makefile
+
+    # Don't be explicit about which compiler to use
+    sed -i '.prev' "s,^CC = \(.*\),," config
 }
